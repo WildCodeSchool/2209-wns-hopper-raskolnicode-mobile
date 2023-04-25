@@ -12,17 +12,6 @@ export default function NbaTeam() {
 }
 
 const styles = StyleSheet.create({
-  image: {
-    resizeMode: "contain",
-    height: 500,
-  },
-  card:{
-    padding:20,
-    margin:20,
-    flexDirection:'row',
-    justifyContent:'space-between',
-    borderWidth: 1,
-  },
   text:{
     textAlign:'center'
   }

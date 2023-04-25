@@ -2,8 +2,8 @@ import "dotenv/config";
 
 export default {
   expo: {
-    name: "wildstagram2022",
-    slug: "wildstagram2022",
+    name: "StarBlog2023",
+    slug: "StarBlog2023",
     version: "1.0.0",
     orientation: "portrait",
     icon: "./assets/icon.png",
