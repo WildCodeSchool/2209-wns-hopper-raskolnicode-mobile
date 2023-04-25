@@ -23,7 +23,8 @@ export default function App () {
   return (
     <ApolloProvider client={client}>
     <NavigationContainer>
-    <Stack.Screen name="Blog" component={Blog}/>
+    <Stack.Navigator>
+      <Stack.Screen name="Blog" component={Blog}/>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
@@ -40,6 +41,7 @@ export default function App () {
       >
         <Tab.Screen name="Home" component={Home} />
       </Tab.Navigator>
+    </Stack.Navigator>
     </NavigationContainer>
     </ApolloProvider>
   );
