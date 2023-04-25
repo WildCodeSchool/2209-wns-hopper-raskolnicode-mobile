@@ -1,0 +1,13 @@
+To launch the application : 
+
+```
+
+npm install
+
+npm i -g expo-cli  
+
+npx expo install react-native@0.70.8
+
+```
+
+
