@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Image, FlatList, StyleSheet, Button, View, Text,Pressable } from "react-native";
 
-export default function NbaTeam() {
+export default function Home() {
 
   return (
     <>
