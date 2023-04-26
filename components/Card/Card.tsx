@@ -13,7 +13,7 @@ export default function Card({data,navigation}) {
           return (
             <>
               
-                <View style={styles.card} >
+                <View style={styles.card}>
                 <Pressable onPress={() => navigation.navigate(`Blog`,{itemId: itemData?.item?.id})}>
                 <Image
                   style={styles.image}
