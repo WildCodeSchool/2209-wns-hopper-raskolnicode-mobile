@@ -7,6 +7,7 @@ export const GET_BLOGS = gql`
       id
       description
       name
+      created_at
       user {
         id
         email

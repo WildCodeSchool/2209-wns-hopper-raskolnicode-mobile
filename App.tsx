@@ -6,6 +6,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import Ionicons from "@expo/vector-icons/Ionicons";
 import Home from "./screens/Home";
 import Blog from "./screens/Blog";
+import Post from './screens/Post';
 import { createStackNavigator } from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
@@ -23,22 +24,11 @@ export default function App () {
   return (
     <ApolloProvider client={client}>
     <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName="";
-
-            if (route.name === "Home") {
-              iconName = focused ? "home" : "home-outline";
-            }
-            return <Ionicons name={iconName} size={size} color={color} />;
-          },
-          tabBarActiveTintColor: route.name === "Home"?'#8EB8E5':"blue",
-          tabBarInactiveTintColor: "black",
-        })}
-      >
-        <Tab.Screen name="Home" component={Home} />
-      </Tab.Navigator>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Blog" component={Blog} />
+        <Stack.Screen name="Post" component={Post} />
+      </Stack.Navigator>
     </NavigationContainer>
     </ApolloProvider>
   );
