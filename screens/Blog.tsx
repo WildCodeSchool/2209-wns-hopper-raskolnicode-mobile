@@ -5,16 +5,20 @@ import { GET_BLOG } from "../graphql/queries";
 
 export default function Blog({route, navigation}) {
   const { itemId } = route.params;
-  const { loading, data } = useQuery(GET_BLOG, {
+  const { loading, data,refetch } = useQuery(GET_BLOG, {
     variables: {
       getBlogId: itemId,
     },
   });
+
+  useEffect(()=>{
+    refetch()
+  },[])
+
   return (
     <>
       <Text style={styles.text}>{data?.getBlog.name}</Text>
-      <Text style={styles.text}>{data?.getBlog.description}</Text>
-      <Text> </Text>
+      {loading === true && <Text>Chargement...</Text>}
       <FlatList
         data={data?.getBlog.posts}
         renderItem={(itemData) => {
@@ -23,18 +27,21 @@ export default function Blog({route, navigation}) {
             <>
               <View style={styles.card}>
                 <Pressable onPress={() => navigation.navigate(`Post`,{itemId: itemData?.item?.id})}>
-                <Image
-                  style={styles.image}
-                  source={{
-                    uri:
-                      "https://picsum.photos/1200/400?random="+itemData.item.id
-                  }}
-                />
+                {itemData?.item.picture ?
+                  <Image style={styles.image} source={{
+                    uri: itemData.item.picture.link
+                  }}/>
+                    :
+                  <Image style={styles.image} source={require('../assets/default-post-img.png')}/>
+                  }
                 <Text style={styles.title}>
                     {itemData?.item?.title}
                 </Text>
                 <Text style={styles.description}>
                     {itemData?.item?.summary}
+                </Text>
+                <Text style={styles.description}>
+                    {itemData?.item?.updated_at}
                 </Text>
                 </Pressable>
                 </View>

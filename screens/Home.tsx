@@ -14,10 +14,12 @@ const { loading, data } = useQuery(GET_BLOGS);
     <ScrollView style={styles.container}>
         <View style={styles.carousel}>
           <Text style={styles.title}>Les blogs les plus récents</Text>
+          {loading === true && <Text>Chargement...</Text>}
           <Carousel data={data} navigation={navigation}/>
         </View>
         <View style={styles.list}>
           <Text style={styles.title}>Parcourir les Blogs</Text>
+          {loading === true && <Text>Chargement...</Text>}
           <Card data={data} navigation={navigation}/>
         </View>
     </ScrollView>

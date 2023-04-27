@@ -19,8 +19,15 @@ export const GET_BLOGS = gql`
         summary
         title
         content
-        image
+        picture {
+          link
+          name
+        }
         updated_at
+      }
+      picture {
+        link
+        name
       }
     }
   }
@@ -43,10 +50,38 @@ export const GET_BLOG = gql`
         title
         summary
         content
-        image
+        picture {
+          name
+          link
+        }
         updated_at
       }
     }
   }
+`;
+export const GET_POST = gql`
+query GetPost($postId: ID!) {
+  getPost(postId: $postId) {
+    comments {
+      created_at
+      id
+      text
+      user {
+        pseudo
+      }
+    }
+    content
+    created_at
+    id
+    isArchived
+    picture {
+      link
+      name
+    }
+    summary
+    title
+    updated_at
+  }
+}
 `;
 

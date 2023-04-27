@@ -5,40 +5,31 @@
   export default function Carousel({data,navigation}) {
     return (
       <>
-        <View>
           <ScrollView horizontal>
-            <View>
-            <FlatList
-              horizontal
-              data={data?.getBlogs}
-              renderItem={(itemData) => {
-                console.log("itemCarousel", itemData);
-                return (
-                  <>
-                      <View style={styles.card}>
-                      <Pressable onPress={() => navigation.navigate(`Blog`,{itemId: itemData?.item?.id})}>
-                      <Image
-                        style={styles.image}
-                        source={{
-                          uri:
-                            "https://picsum.photos/1200/400?random="+(itemData.item.id+1)
-                        }}
-                      />
-                      <Text style={styles.title}>
-                          {itemData?.item?.name}
-                      </Text>
-                      <Text style={styles.description}>
-                          {itemData?.item?.description}
-                      </Text>
-                      </Pressable>
-                      </View>
-                  </>
-                );
-              }}
-            />
-            </View>
+            {data?.getBlogs?.map((itemData) =>{
+              console.log(itemData)
+              return (
+                  <View style={styles.card} key={itemData.id}>
+                  <Pressable onPress={() => navigation.navigate(`Blog`,{itemId: itemData.id})}>
+                  {itemData?.picture ?
+                  <Image style={styles.image} source={{
+                    uri: itemData.picture.link
+                  }}/>
+                    :
+                  <Image style={styles.image} source={require('../../assets/default-post-img.png')}/>
+                  }
+                  <Text style={styles.title}>
+                      {itemData?.name}
+                  </Text>
+                  <Text style={styles.description}>
+                      {itemData?.description}
+                  </Text>
+                  </Pressable>
+                  </View>
+              )
+            })
+            }
           </ScrollView>
-        </View>
       </>
     )
   }
@@ -64,12 +55,12 @@
       width:'100%'
     },
     title: {
-        margin:10,
+        margin:5,
         fontSize: 20,
         fontWeight: 'bold'
     },
     description:{
-        margin:10
+        margin:5
     },
     created_at:{
         padding:8,

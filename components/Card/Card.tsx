@@ -2,43 +2,33 @@ import React, { useEffect, useState } from "react";
 import { Image, FlatList, StyleSheet, Button, View, Text,Pressable } from "react-native";
 
 export default function Card({data,navigation}) {
-  
+
   return (
     <>
-      
-<FlatList
-        data={data?.getBlogs}
-        renderItem={(itemData) => {
-          console.log("itemCard", itemData);
-          return (
-            <>
-              
-                <View style={styles.card}>
-                <Pressable onPress={() => navigation.navigate(`Blog`,{itemId: itemData?.item?.id})}>
-                <Image
-                  style={styles.image}
-                  source={{
-                    uri:
-                      "https://picsum.photos/1200/400?random="+itemData.item.id
-                  }}
-                />
-                <Text style={styles.title}>
-                    {itemData?.item?.name}
-                </Text>
-                <Text style={styles.description}>
-                    {itemData?.item?.description}
-                </Text>
-                <Text style={styles.created_at}>
-                    {itemData?.item?.created_at}
-                </Text>
-                </Pressable>
-                </View>
-              
-            </>
-          );
-        }}
-      />
-      
+      {data?.getBlogs?.map((itemData) =>{
+      return (
+        <View style={styles.card} key={itemData.id}>
+        <Pressable onPress={() => navigation.navigate(`Blog`,{itemId: itemData.id})}>
+        {itemData?.picture ?
+        <Image style={styles.image} source={{
+          uri: itemData.picture.link
+        }}/>
+          :
+        <Image style={styles.image} source={require('../../assets/default-post-img.png')}/>
+        }
+        <Text style={styles.title}>
+            {itemData?.name}
+        </Text>
+        <Text style={styles.description}>
+            {itemData?.description}
+        </Text>
+        <Text style={styles.created_at}>
+            {itemData?.created_at}
+        </Text>
+        </Pressable>
+        </View>
+      )}
+      )}
     </>
   ) 
 }
