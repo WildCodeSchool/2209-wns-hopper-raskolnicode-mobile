@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { GET_BLOGS } from "../graphql/queries";
 import { useQuery } from "@apollo/client";
 import { Image, FlatList, StyleSheet, Button, View, Text,Pressable } from "react-native";
-import Card from "../components/Card/Card";
+import Card from "../components/ListCard/ListCard";
 import { ScrollView } from "react-native-gesture-handler";
 import Carousel from "../components/MyCarousel/Carousel";
 

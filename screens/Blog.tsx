@@ -2,6 +2,8 @@ import { useQuery } from "@apollo/client";
 import React, { useEffect, useState } from "react";
 import { Image, FlatList, StyleSheet, Button, View, Text,Pressable } from "react-native";
 import { GET_BLOG } from "../graphql/queries";
+import ListCard from "../components/ListCard/ListCard";
+import { ScrollView } from "react-native-gesture-handler";
 
 export default function Blog({route, navigation}) {
   const { itemId } = route.params;
@@ -14,41 +16,12 @@ export default function Blog({route, navigation}) {
   useEffect(()=>{
     refetch()
   },[])
-
+console.log(data)
   return (
     <>
-      <Text style={styles.text}>{data?.getBlog.name}</Text>
-      {loading === true && <Text>Chargement...</Text>}
-      <FlatList
-        data={data?.getBlog.posts}
-        renderItem={(itemData) => {
-          console.log("itemPost", itemData);
-          return (
-            <>
-              <View style={styles.card}>
-                <Pressable onPress={() => navigation.navigate(`Post`,{itemId: itemData?.item?.id})}>
-                {itemData?.item.picture ?
-                  <Image style={styles.image} source={{
-                    uri: itemData.item.picture.link
-                  }}/>
-                    :
-                  <Image style={styles.image} source={require('../assets/default-post-img.png')}/>
-                  }
-                <Text style={styles.title}>
-                    {itemData?.item?.title}
-                </Text>
-                <Text style={styles.description}>
-                    {itemData?.item?.summary}
-                </Text>
-                <Text style={styles.description}>
-                    {itemData?.item?.updated_at}
-                </Text>
-                </Pressable>
-                </View>
-            </>
-          );
-        }}
-      />
+    <ScrollView>
+      <ListCard data={data?.getBlog.posts} navigation={navigation}/>
+      </ScrollView>
     </>
   )
 }

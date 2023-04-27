@@ -5,7 +5,7 @@ export default function Card({data,navigation}) {
 
   return (
     <>
-      {data?.getBlogs?.map((itemData) =>{
+      {data?.getBlogs ? data?.getBlogs?.map((itemData) =>{
       return (
         <View style={styles.card} key={itemData.id}>
         <Pressable onPress={() => navigation.navigate(`Blog`,{itemId: itemData.id})}>
@@ -23,12 +23,37 @@ export default function Card({data,navigation}) {
             {itemData?.description}
         </Text>
         <Text style={styles.created_at}>
-            {itemData?.created_at}
+            {itemData?.updated_at}
         </Text>
         </Pressable>
         </View>
       )}
-      )}
+      ):
+      data?.map((itemData) =>{
+        return (
+          <View style={styles.card} key={itemData.id}>
+          <Pressable onPress={() => navigation.navigate(`Post`,{itemId: itemData.id})}>
+          {itemData?.picture ?
+          <Image style={styles.image} source={{
+            uri: itemData.picture.link
+          }}/>
+            :
+          <Image style={styles.image} source={require('../../assets/default-post-img.png')}/>
+          }
+          <Text style={styles.title}>
+              {itemData?.title}
+          </Text>
+          <Text style={styles.description}>
+              {itemData?.summary}
+          </Text>
+          <Text style={styles.created_at}>
+              {itemData?.updated_at}
+          </Text>
+          </Pressable>
+          </View>
+        )}
+        )
+      }
     </>
   ) 
 }
