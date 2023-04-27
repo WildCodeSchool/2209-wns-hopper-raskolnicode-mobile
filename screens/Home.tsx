@@ -23,7 +23,7 @@ console.log('-----------------',data?.getBlogs)
           {data?.getBlogs.map((itemData)=>{
             console.log(itemData)
             return(
-              <ListCard  path={'Blog'} itemData={itemData} navigation={navigation}/>
+              <ListCard key={itemData.id} path={'Blog'} itemData={itemData} navigation={navigation}/>
             )
           })}
           

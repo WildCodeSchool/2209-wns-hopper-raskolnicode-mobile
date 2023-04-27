@@ -24,7 +24,7 @@ console.log(data)
       {data?.getBlog.posts.map((itemData)=>{
           console.log(itemData)
           return(
-            <ListCard  path={'Article'} itemData={itemData} navigation={navigation}/>
+            <ListCard key={itemData.id} path={'Article'} itemData={itemData} navigation={navigation}/>
           )
         })}
       </ScrollView>
