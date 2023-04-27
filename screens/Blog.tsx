@@ -20,6 +20,7 @@ console.log(data)
   return (
     <>
     <ScrollView>
+      <Text style={styles.text}>Bienvenue sur {'\n'}{data?.getBlog.name}</Text>
       <ListCard data={data?.getBlog.posts} navigation={navigation}/>
       </ScrollView>
     </>
@@ -27,6 +28,7 @@ console.log(data)
 }
 const styles = StyleSheet.create({
   text:{
+    margin:5,
     textAlign:'center',
     fontSize:24,
     fontWeight:'bold'

@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Image, FlatList, StyleSheet, Button, View, Text,Pressable } from "react-native";
 
 export default function Card({data,navigation}) {
-
+  
   return (
     <>
-      {data?.getBlogs ? data?.getBlogs?.map((itemData) =>{
+      {data?.getBlogs ? 
+      data?.getBlogs?.map((itemData) =>{
+      const date = new Date(itemData?.updated_at)
       return (
         <View style={styles.card} key={itemData.id}>
         <Pressable onPress={() => navigation.navigate(`Blog`,{itemId: itemData.id})}>
@@ -23,16 +25,17 @@ export default function Card({data,navigation}) {
             {itemData?.description}
         </Text>
         <Text style={styles.created_at}>
-            {itemData?.updated_at}
+            écrit le {date.toLocaleDateString("fr")}
         </Text>
         </Pressable>
         </View>
       )}
       ):
       data?.map((itemData) =>{
+        const date = new Date(itemData?.updated_at)
         return (
           <View style={styles.card} key={itemData.id}>
-          <Pressable onPress={() => navigation.navigate(`Post`,{itemId: itemData.id})}>
+          <Pressable onPress={() => navigation.navigate(`Article`,{itemId: itemData.id})}>
           {itemData?.picture ?
           <Image style={styles.image} source={{
             uri: itemData.picture.link
@@ -47,7 +50,7 @@ export default function Card({data,navigation}) {
               {itemData?.summary}
           </Text>
           <Text style={styles.created_at}>
-              {itemData?.updated_at}
+              écrit le {date.toLocaleDateString("fr")}
           </Text>
           </Pressable>
           </View>
@@ -85,7 +88,7 @@ const styles = StyleSheet.create({
     },
     created_at:{
         padding:8,
-        width:'60%',
+        width:'50%',
         margin:10,
         borderWidth:1
     }

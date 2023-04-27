@@ -11,7 +11,6 @@ export default function Post({route,navigation}) {
       postId: itemId,
     },
   });
-  console.log(data)
   useEffect(()=>{
     refetch()
   },[])
@@ -44,6 +43,7 @@ export default function Post({route,navigation}) {
               </View>
         );
       })}
+
       </ScrollView>
     </>
   ) 

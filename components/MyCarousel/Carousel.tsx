@@ -47,7 +47,7 @@
         backgroundColor: 'white',
         margin:10,
         borderRadius: 10,
-        height:250,
+        height:270,
         width:150,
     },
     image: {

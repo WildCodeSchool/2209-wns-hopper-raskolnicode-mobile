@@ -25,9 +25,9 @@ export default function App () {
     <ApolloProvider client={client}>
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Accueil" component={Home} />
         <Stack.Screen name="Blog" component={Blog} />
-        <Stack.Screen name="Post" component={Post} />
+        <Stack.Screen name="Article" component={Post} />
       </Stack.Navigator>
     </NavigationContainer>
     </ApolloProvider>
