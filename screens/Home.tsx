@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { GET_BLOGS } from "../graphql/queries";
 import { useQuery } from "@apollo/client";
 import { Image, FlatList, StyleSheet, Button, View, Text,Pressable } from "react-native";
-import Card from "../components/ListCard/ListCard";
 import { ScrollView } from "react-native-gesture-handler";
 import Carousel from "../components/MyCarousel/Carousel";
+import ListCard  from "../components/Card/Card";
 
 export default function Home({ navigation }) {
 const { loading, data } = useQuery(GET_BLOGS);
-
+console.log('-----------------',data?.getBlogs)
   return (
     <>
     <ScrollView style={styles.container}>
@@ -20,7 +20,13 @@ const { loading, data } = useQuery(GET_BLOGS);
         <View style={styles.list}>
           <Text style={styles.title}>Parcourir les Blogs</Text>
           {loading === true && <Text>Chargement...</Text>}
-          <Card data={data} navigation={navigation}/>
+          {data?.getBlogs.map((itemData)=>{
+            console.log(itemData)
+            return(
+              <ListCard  path={'Blog'} itemData={itemData} navigation={navigation}/>
+            )
+          })}
+          
         </View>
     </ScrollView>
     </>

@@ -2,8 +2,8 @@ import { useQuery } from "@apollo/client";
 import React, { useEffect, useState } from "react";
 import { Image, FlatList, StyleSheet, Button, View, Text,Pressable } from "react-native";
 import { GET_BLOG } from "../graphql/queries";
-import ListCard from "../components/ListCard/ListCard";
 import { ScrollView } from "react-native-gesture-handler";
+import ListCard from "../components/Card/Card";
 
 export default function Blog({route, navigation}) {
   const { itemId } = route.params;
@@ -21,7 +21,12 @@ console.log(data)
     <>
     <ScrollView>
       <Text style={styles.text}>Bienvenue sur {'\n'}{data?.getBlog.name}</Text>
-      <ListCard data={data?.getBlog.posts} navigation={navigation}/>
+      {data?.getBlog.posts.map((itemData)=>{
+          console.log(itemData)
+          return(
+            <ListCard  path={'Article'} itemData={itemData} navigation={navigation}/>
+          )
+        })}
       </ScrollView>
     </>
   )
