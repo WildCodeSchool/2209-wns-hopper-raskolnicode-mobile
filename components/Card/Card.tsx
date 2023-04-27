@@ -9,7 +9,7 @@ export default function Card({data,navigation}) {
 <FlatList
         data={data?.getBlogs}
         renderItem={(itemData) => {
-          console.log("item", itemData);
+          console.log("itemCard", itemData);
           return (
             <>
               

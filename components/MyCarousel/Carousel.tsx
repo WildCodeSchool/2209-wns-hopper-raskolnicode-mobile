@@ -12,7 +12,7 @@
               horizontal
               data={data?.getBlogs}
               renderItem={(itemData) => {
-                console.log("item", itemData);
+                console.log("itemCarousel", itemData);
                 return (
                   <>
                       <View style={styles.card}>
@@ -21,7 +21,7 @@
                         style={styles.image}
                         source={{
                           uri:
-                            "https://picsum.photos/1200/400?random="+itemData.item.id
+                            "https://picsum.photos/1200/400?random="+(itemData.item.id+1)
                         }}
                       />
                       <Text style={styles.title}>
