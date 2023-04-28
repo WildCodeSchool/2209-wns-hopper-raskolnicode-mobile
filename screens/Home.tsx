@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { GET_BLOGS } from "../graphql/queries";
 import { useQuery } from "@apollo/client";
-import { Image, FlatList, StyleSheet, Button, View, Text,Pressable } from "react-native";
+import {StyleSheet,View, Text} from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Carousel from "../components/MyCarousel/Carousel";
-import ListCard  from "../components/Card/Card";
+import Card  from "../components/Card/Card";
 
 export default function Home({ navigation }) {
 const { loading, data } = useQuery(GET_BLOGS);
-console.log('-----------------',data?.getBlogs)
   return (
     <>
     <ScrollView style={styles.container}>
@@ -23,7 +22,7 @@ console.log('-----------------',data?.getBlogs)
           {data?.getBlogs.map((itemData)=>{
             console.log(itemData)
             return(
-              <ListCard key={itemData.id} path={'Blog'} itemData={itemData} navigation={navigation}/>
+              <Card key={itemData.id} path={'Blog'} itemData={itemData} navigation={navigation}/>
             )
           })}
           

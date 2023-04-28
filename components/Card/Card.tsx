@@ -3,7 +3,7 @@ import { Image, FlatList, StyleSheet, Button, View, Text,Pressable } from "react
 
 export default function Card({itemData,path,navigation}) {
   const date = new Date(itemData?.updated_at)
-  console.log('ooooooooo',itemData)
+  console.log('itemCard',itemData);
   return (
         <View style={styles.card} key={itemData?.id}>
         <Pressable onPress={() => navigation.navigate(`${path}`,{itemId: itemData?.id})}>
@@ -21,7 +21,7 @@ export default function Card({itemData,path,navigation}) {
             {itemData?.description ? itemData?.description : itemData?.summary}
         </Text>
         <Text style={styles.created_at}>
-            écrit le {date.toLocaleDateString("fr")}
+            modifié le {date.toLocaleDateString("fr")}
         </Text>
         </Pressable>
         </View>
