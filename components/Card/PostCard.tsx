@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Image, FlatList, StyleSheet, Button, View, Text,Pressable } from "react-native";
+import { Blog, Post } from "../../interfaces";
 
-export default function Card({itemData,path,navigation}) {
+export type PostCardProps = {
+  itemData : Post
+  path : string
+  navigation : any
+}
+
+export default function PostCard({itemData,path,navigation}: PostCardProps) {
   const date = new Date(itemData?.updated_at)
   console.log('itemCard',itemData);
   return (
@@ -15,10 +22,10 @@ export default function Card({itemData,path,navigation}) {
         <Image style={styles.image} source={require('../../assets/default-post-img.png')}/>
         }
         <Text style={styles.title}>
-            {itemData?.name ? itemData?.name : itemData?.title}
+            {itemData?.title}
         </Text>
         <Text style={styles.description}>
-            {itemData?.description ? itemData?.description : itemData?.summary}
+            {itemData?.summary}
         </Text>
         <Text style={styles.created_at}>
             modifié le {date.toLocaleDateString("fr")}

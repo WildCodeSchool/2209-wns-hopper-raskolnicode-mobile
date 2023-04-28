@@ -4,6 +4,7 @@ export type Blog = {
     id: number
     name: string
     posts: Post[]
+    picture:Picture
     updated_at: string
     user: User
 };
@@ -15,6 +16,7 @@ export type Post = {
     created_at: string
     id: number
     image: string
+    picture:Picture
     isArchived: boolean
     summary: string
     title: string
@@ -38,3 +40,8 @@ export type Comment = {
     text: string
     user: User
 }
+export type Picture = {
+    id: number
+    name: string
+    link: string
+  }

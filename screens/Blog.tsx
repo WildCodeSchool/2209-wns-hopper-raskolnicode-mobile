@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Image, FlatList, StyleSheet, Button, View, Text,Pressable } from "react-native";
 import { GET_BLOG } from "../graphql/queries";
 import { ScrollView } from "react-native-gesture-handler";
-import ListCard from "../components/Card/Card";
+import PostCard from "../components/Card/PostCard";
+
 
 export default function Blog({route, navigation}) {
   const { itemId } = route.params;
@@ -24,7 +25,7 @@ console.log(data)
       {data?.getBlog.posts.map((itemData)=>{
           console.log(itemData)
           return(
-            <ListCard key={itemData.id} path={'Article'} itemData={itemData} navigation={navigation}/>
+            <PostCard key={itemData.id} path={'Article'} itemData={itemData} navigation={navigation}/>
           )
         })}
       </ScrollView>

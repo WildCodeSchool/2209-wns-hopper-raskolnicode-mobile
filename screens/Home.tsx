@@ -4,7 +4,7 @@ import { useQuery } from "@apollo/client";
 import {StyleSheet,View, Text} from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Carousel from "../components/MyCarousel/Carousel";
-import Card  from "../components/Card/Card";
+import BlogCard  from "../components/Card/BlogCard";
 
 export default function Home({ navigation }) {
 const { loading, data } = useQuery(GET_BLOGS);
@@ -22,7 +22,7 @@ const { loading, data } = useQuery(GET_BLOGS);
           {data?.getBlogs.map((itemData)=>{
             console.log(itemData)
             return(
-              <Card key={itemData.id} path={'Blog'} itemData={itemData} navigation={navigation}/>
+              <BlogCard key={itemData.id} path={'Blog'} itemData={itemData} navigation={navigation}/>
             )
           })}
           

@@ -11,15 +11,10 @@ const BottomTabNavigator = () => {
     <Tab.Navigator
     screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
-          let iconName="";
-
-          if (route.name === "Home") {
-            iconName = focused ? "home" : "home-outline";
-          }
-          return <Ionicons name={iconName} size={size} color={color} />;
+          
+          return <Ionicons name={"home"} size={size} color={color} />;
         },
-        tabBarActiveTintColor: route.name === "Home"?'#345995':"blue",
-        tabBarInactiveTintColor: "black",
+        tabBarActiveTintColor: route.name === "Home"?'#345995':"black",
       })}
     >
       <Tab.Screen name="Home" component={MainStackNavigator} options={{headerShown: false}}/>
