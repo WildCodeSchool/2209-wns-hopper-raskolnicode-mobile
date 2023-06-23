@@ -7,7 +7,6 @@
       <>
           <ScrollView horizontal>
             {data?.getBlogs?.map((itemData) =>{
-              console.log(itemData)
               return (
                   <View style={styles.card} key={itemData.id}>
                   <Pressable onPress={() => navigation.navigate(`Blog`,{itemId: itemData.id})}>

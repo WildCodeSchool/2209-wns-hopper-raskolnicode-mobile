@@ -10,7 +10,6 @@ export type PostCardProps = {
 
 export default function PostCard({itemData,path,navigation}: PostCardProps) {
   const date = new Date(itemData?.updated_at)
-  console.log('itemCard',itemData);
   return (
         <View style={styles.card} key={itemData?.id}>
         <Pressable onPress={() => navigation.navigate(`${path}`,{itemId: itemData?.id})}>

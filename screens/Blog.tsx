@@ -17,13 +17,12 @@ export default function Blog({route, navigation}) {
   useEffect(()=>{
     refetch()
   },[])
-console.log(data)
+
   return (
     <>
     <ScrollView>
       <Text style={styles.text}>Bienvenue sur {'\n'}{data?.getBlog.name}</Text>
       {data?.getBlog.posts.map((itemData)=>{
-          console.log(itemData)
           return(
             <PostCard key={itemData.id} path={'Article'} itemData={itemData} navigation={navigation}/>
           )

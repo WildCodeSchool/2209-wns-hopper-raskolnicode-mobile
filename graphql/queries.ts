@@ -85,3 +85,20 @@ query GetPost($postId: ID!) {
 }
 `;
 
+export const GET_LOGGED_USER = gql`
+  query LoggedUser {
+    loggedUser {
+      id
+      email
+      password
+      pseudo
+      role
+      blogs {
+        id
+        name
+        description
+        updated_at
+      }
+    }
+  }
+`;

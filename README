@@ -1,12 +1,15 @@
 To launch the application : 
 
 ```
+git checkout dev
 
 npm install
 
 npm i -g expo-cli  
 
 npx expo install react-native@0.70.8
+
+Changer l'adresse ip du client par la votre dans le fichier ./App.tsx ligne 10 
 
 ```
 
