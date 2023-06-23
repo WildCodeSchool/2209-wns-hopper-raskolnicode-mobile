@@ -14,9 +14,8 @@ const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
   const [user, setUser] = useState(null);
-  console.log(user)
   const { data, refetch, error } = useQuery(GET_LOGGED_USER);
-  AsyncStorage.removeItem("token");
+  // AsyncStorage.removeItem("token");
   useEffect(() => {
     if (error) {
       setUser(null);
@@ -31,7 +30,6 @@ const BottomTabNavigator = () => {
     }
     try {
       await refetch();
-      setUser(data?.loggedUser);
     } catch (err: any) {
       console.log(JSON.stringify(err,null,4)) 
       if (err.message.includes("Access denied!")) {
@@ -42,6 +40,7 @@ const BottomTabNavigator = () => {
 
   useEffect(() => {
     setUser(data?.loggedUser);
+    console.log("STACK",user)
   }, [data]);
 
   return (
@@ -59,7 +58,7 @@ const BottomTabNavigator = () => {
       {!user && 
       <Tab.Screen
         name="Connexion"
-        children={()=><Login onTokenChange={onTokenChange}/>}
+        children={()=><Login onTokenChange={onTokenChange} />}
         options={{ headerShown: false }}
       />
       }

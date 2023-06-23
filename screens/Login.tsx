@@ -27,7 +27,7 @@ const Login = (props) => {
 
       if (data && data.login) {
         props.onTokenChange(data.login);
-        navigation.navigate('Accueil'); // Remplacez 'Home' par le nom de votre écran d'accueil
+        props.navigation.navigate('Accueil'); // Remplacez 'Home' par le nom de votre écran d'accueil
       } else {
         setError('Veuillez vérifier votre adresse e-mail et votre mot de passe');
       }

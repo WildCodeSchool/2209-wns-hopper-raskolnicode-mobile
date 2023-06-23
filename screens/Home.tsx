@@ -15,7 +15,7 @@ console.log('HOME user: ',user)
     <>
     <ScrollView style={styles.container}>
         <View style={styles.carousel}>
-          <Text style={styles.title}>Les blogs les plus récents bienvenue{user?.email}</Text>
+          <Text style={styles.title}>Les blogs les plus récents</Text>
           {loading === true && <Text>Chargement...</Text>}
           <Carousel data={data} navigation={navigation}/>
         </View>
