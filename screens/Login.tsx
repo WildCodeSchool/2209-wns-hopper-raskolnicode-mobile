@@ -2,14 +2,14 @@ import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet, Pressable } from 'react-native';
 import { LOGIN } from '../graphql/mutations';
-import { useNavigation } from '@react-navigation/native';
+
 import { Ionicons } from '@expo/vector-icons';
 
 const Login = (props) => {
   const [email, setEmail] = useState('test@gmail.com');
   const [password, setPassword] = useState('test1234');
   const [error, setError] = useState('');
-  const navigation = useNavigation();
+
   const [showPassword, setShowPassword] = useState(false);
   const [doSignInMutation, { loading }] = useMutation(LOGIN);
 
@@ -24,7 +24,7 @@ const Login = (props) => {
         },
       });
       
-
+console.log('Data  :  ',data)
       if (data && data.login) {
         props.onTokenChange(data.login);
         props.navigation.navigate('Accueil'); // Remplacez 'Home' par le nom de votre écran d'accueil
