@@ -54,7 +54,11 @@ const BottomTabNavigator = () => {
         tabBarActiveTintColor: route.name === "Home"?'#345995':"black",
       })}
     >
-      <Tab.Screen name="Home" component={MainStackNavigator} options={{headerShown: false}}/>
+      <Tab.Screen
+        name="Home"
+        children={()=><MainStackNavigator onTokenChange={onTokenChange} />}
+        options={{ headerShown: false }}
+      />
       {!user && 
       <Tab.Screen
         name="Connexion"
