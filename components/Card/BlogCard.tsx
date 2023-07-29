@@ -10,6 +10,8 @@ export type BlogCardProps = {
 
 export default function BlogCard({itemData,path,navigation}: BlogCardProps) {
   const date = new Date(itemData?.updated_at)
+
+  console.log("Item data picture: ", itemData.picture); 
   return (
         <View style={styles.card} key={itemData?.id}>
         <Pressable onPress={() => navigation.navigate(`${path}`,{itemId: itemData?.id})}>

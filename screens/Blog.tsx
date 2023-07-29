@@ -14,14 +14,19 @@ export default function Blog({route, navigation}) {
     },
   });
 
+  
   useEffect(()=>{
     refetch()
   },[])
 
+
+  if (loading) return <Text>Loading...</Text>;
   return (
     <>
     <ScrollView>
       <Text style={styles.text}>Bienvenue sur {'\n'}{data?.getBlog.name}</Text>
+      <Text style={styles.description}>{data?.getBlog.description}</Text>
+
       {data?.getBlog.posts.map((itemData)=>{
           return(
             <PostCard key={itemData.id} path={'Article'} itemData={itemData} navigation={navigation}/>

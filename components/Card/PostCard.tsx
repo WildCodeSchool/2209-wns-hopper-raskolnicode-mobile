@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         borderRadius: 10
     },
     image: {
-      height: 200,
+      height: 400,
       width:'100%'
     },
     title: {
