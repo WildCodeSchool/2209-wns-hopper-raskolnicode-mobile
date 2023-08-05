@@ -8,6 +8,7 @@ import {
   View,
   Text,
   Pressable,
+  ImageBackground,
 } from "react-native";
 import { GET_BLOG } from "../graphql/queries";
 import { ScrollView } from "react-native-gesture-handler";
@@ -29,15 +30,24 @@ export default function Blog({ route, navigation }) {
   return (
     <>
       <ScrollView>
-        <Image
-          className="object-cover object-center w-full mb-8 h-72 md:h-36 rounded-xl"
-          src={data?.getBlog.picture.link}
-          alt={data?.getBlog.picture.name}
-        />
-        <Text style={styles.text}>
+        <View className="flex justify-items-center justify-center" style={styles.container}>
+          <ImageBackground
+            src={data?.getBlog.picture.link}
+            resizeMode="cover"
+          >
+            <Text className="pt-8" style={styles.welcomeText}>
+              Bienvenue sur
+            </Text>
+            <Text className="h-56" style={styles.jumbotronText}>
+              {data?.getBlog.name}
+            </Text>
+          </ImageBackground>
+        </View>
+        {/* <Image className="object-cover object-center w-full mb-8 h-72 md:h-36 rounded-xl" src={data?.getBlog.picture.link} alt="blog"/> */}
+        {/* <Text style={styles.text}>
           Bienvenue sur {"\n"}
           {data?.getBlog.name}
-        </Text>
+        </Text> */}
 
         <Text style={styles.description}>{data?.getBlog.description}</Text>
 
@@ -56,6 +66,33 @@ export default function Blog({ route, navigation }) {
   );
 }
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    lineHeight: 30,
+  },
+  image: {
+    flex: 1,
+    justifyContent: "center",
+  },
+  welcomeText: {
+    color: "white",
+    fontSize: 20,
+    paddingTop: 46,
+    paddingBottom: 16,
+    fontWeight: "bold",
+    textAlign: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: "#000000c0",
+  },
+
+  jumbotronText: {
+    color: "white",
+    fontSize: 16,
+    fontWeight: "bold",
+    textAlign: "center",
+    backgroundColor: "#000000c0",
+  },
   text: {
     margin: 5,
     textAlign: "center",
