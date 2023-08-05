@@ -14,9 +14,7 @@ export default function Home({ navigation }) {
   return (
     <>
       <ScrollView style={styles.container}>
-        <View className="font-bold flex-1 items-center justify-center bg-red">
-          <Text className="font-bold text-red-500">This text is in red</Text>
-        </View>
+
         <View style={styles.carousel}>
           <Text style={styles.title}>Les blogs les plus récents</Text>
           {loading === true && <Text>Chargement...</Text>}

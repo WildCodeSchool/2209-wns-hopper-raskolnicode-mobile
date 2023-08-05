@@ -8,6 +8,7 @@ export type BlogCardProps = {
   navigation : any
 }
 
+
 export default function BlogCard({itemData,path,navigation}: BlogCardProps) {
   const date = new Date(itemData?.updated_at)
 
@@ -20,7 +21,7 @@ export default function BlogCard({itemData,path,navigation}: BlogCardProps) {
           uri: itemData.picture.link
         }}/>
           :
-        <Image style={styles.image} source={require('../../assets/default-post-img.png')}/>
+        <Image  style={styles.image} source={require('../../assets/default-post-img.png')}/>
         }
         <Text style={styles.title}>
             {itemData?.name}
@@ -28,8 +29,9 @@ export default function BlogCard({itemData,path,navigation}: BlogCardProps) {
         <Text style={styles.description}>
             {itemData?.description}
         </Text>
-        <Text style={styles.created_at}>
-            modifié le {date.toLocaleDateString("fr")}
+        <Text className="inline-flex items-center rounded-md bg-blue-50 px-2 py-2 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"
+         style={styles.created_at}>
+            Modifié le {date.toLocaleDateString("fr")}
         </Text>
         </Pressable>
         </View>
@@ -63,8 +65,8 @@ const styles = StyleSheet.create({
     },
     created_at:{
         padding:8,
-        width:'50%',
+        width: 140,
         margin:10,
-        borderWidth:1
+        borderWidth:1,       
     }
   });
