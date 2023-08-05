@@ -120,6 +120,7 @@ const styles = StyleSheet.create({
   },
   description: {
     margin: 10,
+    lineHeight: 20
   },
   created_at: {
     padding: 8,
