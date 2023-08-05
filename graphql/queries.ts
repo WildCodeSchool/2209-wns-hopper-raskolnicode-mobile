@@ -8,6 +8,10 @@ export const GET_BLOGS = gql`
       description
       name
       created_at
+      picture {
+        link
+        name
+      }
       user {
         id
         email
@@ -25,10 +29,7 @@ export const GET_BLOGS = gql`
         }
         updated_at
       }
-      picture {
-        link
-        name
-      }
+
     }
   }
 `;
@@ -40,6 +41,11 @@ export const GET_BLOG = gql`
       name
       description
       updated_at
+      picture {
+        id
+        name
+        link
+      }
       user {
         id
         email

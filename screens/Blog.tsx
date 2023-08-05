@@ -1,74 +1,93 @@
 import { useQuery } from "@apollo/client";
 import React, { useEffect, useState } from "react";
-import { Image, FlatList, StyleSheet, Button, View, Text,Pressable } from "react-native";
+import {
+  Image,
+  FlatList,
+  StyleSheet,
+  Button,
+  View,
+  Text,
+  Pressable,
+} from "react-native";
 import { GET_BLOG } from "../graphql/queries";
 import { ScrollView } from "react-native-gesture-handler";
 import PostCard from "../components/Card/PostCard";
 
-
-export default function Blog({route, navigation}) {
+export default function Blog({ route, navigation }) {
   const { itemId } = route.params;
-  const { loading, data,refetch } = useQuery(GET_BLOG, {
+  const { loading, data, refetch } = useQuery(GET_BLOG, {
     variables: {
       getBlogId: itemId,
     },
   });
 
-  
-  useEffect(()=>{
-    refetch()
-  },[])
-
+  useEffect(() => {
+    refetch();
+  }, []);
 
   if (loading) return <Text>Loading...</Text>;
   return (
     <>
-    <ScrollView>
-      <Text style={styles.text}>Bienvenue sur {'\n'}{data?.getBlog.name}</Text>
-      <Text style={styles.description}>{data?.getBlog.description}</Text>
+      <ScrollView>
+        <Image
+          className="object-cover object-center w-full mb-8 h-72 md:h-36 rounded-xl"
+          src={data?.getBlog.picture.link}
+          alt={data?.getBlog.picture.name}
+        />
+        <Text style={styles.text}>
+          Bienvenue sur {"\n"}
+          {data?.getBlog.name}
+        </Text>
 
-      {data?.getBlog.posts.map((itemData)=>{
-          return(
-            <PostCard key={itemData.id} path={'Article'} itemData={itemData} navigation={navigation}/>
-          )
+        <Text style={styles.description}>{data?.getBlog.description}</Text>
+
+        {data?.getBlog.posts.map((itemData) => {
+          return (
+            <PostCard
+              key={itemData.id}
+              path={"Article"}
+              itemData={itemData}
+              navigation={navigation}
+            />
+          );
         })}
-      </ScrollView> 
+      </ScrollView>
     </>
-  )
+  );
 }
 const styles = StyleSheet.create({
-  text:{
-    margin:5,
-    textAlign:'center',
-    fontSize:24,
-    fontWeight:'bold'
+  text: {
+    margin: 5,
+    textAlign: "center",
+    fontSize: 24,
+    fontWeight: "bold",
   },
-  card:{
-      shadowColor: 'black',
-      shadowOffset: { width: 0, height: 2 },
-      shadowRadius: 6,
-      shadowOpacity: 0.26,
-      elevation: 8,
-      backgroundColor: 'white',
-      margin:30,
-      borderRadius: 10
+  card: {
+    shadowColor: "black",
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 6,
+    shadowOpacity: 0.26,
+    elevation: 8,
+    backgroundColor: "white",
+    margin: 30,
+    borderRadius: 10,
   },
   image: {
     height: 200,
-    width:'100%'
+    width: "100%",
   },
   title: {
-      margin:10,
-      fontSize: 20,
-      fontWeight: 'bold'
+    margin: 10,
+    fontSize: 20,
+    fontWeight: "bold",
   },
-  description:{
-      margin:10
+  description: {
+    margin: 10,
   },
-  created_at:{
-      padding:8,
-      width:'60%',
-      margin:10,
-      borderWidth:1
-  }
+  created_at: {
+    padding: 8,
+    width: "60%",
+    margin: 10,
+    borderWidth: 1,
+  },
 });
