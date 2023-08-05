@@ -6,6 +6,16 @@ import BottomTabNavigator from './navigation/TabNavigator';
 import API_URL from './config';
 import { setContext } from "@apollo/client/link/context";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import "./nativewind-output";
+
+const ctx = require.context(
+  // If this require.context is not inside the root directory (next to the package.json) then adjust this file path
+  // to resolve correctly.
+  './node_modules/.cache/expo/tailwind'
+);
+if (ctx.keys().length) ctx(ctx.keys()[0]);
+
+
 
 const httpLink = createHttpLink({
   uri: API_URL,

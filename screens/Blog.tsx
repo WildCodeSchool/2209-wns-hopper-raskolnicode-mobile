@@ -32,7 +32,7 @@ export default function Blog({route, navigation}) {
             <PostCard key={itemData.id} path={'Article'} itemData={itemData} navigation={navigation}/>
           )
         })}
-      </ScrollView>
+      </ScrollView> 
     </>
   )
 }

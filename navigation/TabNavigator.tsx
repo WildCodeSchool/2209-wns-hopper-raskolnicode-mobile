@@ -63,7 +63,7 @@ const BottomTabNavigator = () => {
       />
       {!user && 
       <Tab.Screen
-        name="Connexion"
+        name="Login"
         children={()=><Login onTokenChange={onTokenChange} navigation={navigation}/>}
         options={{ headerShown: false }}
       />

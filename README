@@ -13,4 +13,8 @@ Changer l'adresse ip du client par la votre dans le fichier ./App.tsx ligne 10
 
 ```
 
+RUN Tailwind
 
+```
+npx tailwindcss -i src/input.css --postcss postcss.config.js --watch
+```
