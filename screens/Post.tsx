@@ -18,13 +18,15 @@ export default function Post({route,navigation}) {
     <>
     <ScrollView>
       <Text style={styles.title}>{data?.getPost.title}</Text>
+      <View style={styles.containerImage}> 
     {data?.getPost.picture ?
-      <Image style={styles.image} source={{
+      <Image resizeMode="cover" style={styles.image} source={{
         uri: data?.getPost.picture.link
       }}/>
         :
-      <Image style={styles.image} source={require('../assets/default-post-img.png')}/>
+      <Image  style={styles.image} source={require('../assets/default-post-img.png')}/>
       }
+      </View>
       <Text style={styles.sum}>{data?.getPost.summary}</Text>
       <Text style={styles.content}>{data?.getPost.content}</Text>
       {data?.getPost.comments !='' && 
@@ -49,9 +51,13 @@ export default function Post({route,navigation}) {
   ) 
 }
 const styles = StyleSheet.create({
+  containerImage: {
+    marginRight: '5%',
+    marginLeft: '5%',
+  },
   image: {
-    height: 200,
-    width:'100%'
+    height: 420,
+    width:'100%',
   },
   title:{
     fontSize:20,

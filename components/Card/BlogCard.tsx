@@ -12,7 +12,6 @@ export type BlogCardProps = {
 export default function BlogCard({itemData,path,navigation}: BlogCardProps) {
   const date = new Date(itemData?.updated_at)
 
-  console.log("Item data picture: ", itemData.picture); 
   return (
         <View style={styles.card} key={itemData?.id}>
         <Pressable onPress={() => navigation.navigate(`${path}`,{itemId: itemData?.id})}>
@@ -29,7 +28,7 @@ export default function BlogCard({itemData,path,navigation}: BlogCardProps) {
         <Text style={styles.description}>
             {itemData?.description}
         </Text>
-        <Text className="inline-flex items-center rounded-md bg-blue-50 px-2 py-2 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10"
+        <Text className="inline-flex items-center rounded-md px-2 py-2 text-xs font-medium text-[#345995] ring-1 ring-inset ring-blue-700/10"
          style={styles.created_at}>
             Modifié le {date.toLocaleDateString("fr")}
         </Text>

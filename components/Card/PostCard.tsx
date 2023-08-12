@@ -26,8 +26,9 @@ export default function PostCard({itemData,path,navigation}: PostCardProps) {
         <Text style={styles.description}>
             {itemData?.summary}
         </Text>
-        <Text style={styles.created_at}>
-            modifié le {date.toLocaleDateString("fr")}
+        <Text className="inline-flex items-center rounded-md px-2 py-2 text-xs font-medium text-[#345995] ring-1 ring-inset ring-blue-700/10"
+          style={styles.created_at} >
+            Modifié le {date.toLocaleDateString("fr")}
         </Text>
         </Pressable>
         </View>
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
     },
     image: {
       height: 400,
-      width:'100%'
+      width:'100%',
     },
     title: {
         margin:10,
@@ -60,9 +61,9 @@ const styles = StyleSheet.create({
         margin:10
     },
     created_at:{
-        padding:8,
-        width:'50%',
+     padding:8,
+        width: 140,
         margin:10,
-        borderWidth:1
+        borderWidth:1, 
     }
   });
